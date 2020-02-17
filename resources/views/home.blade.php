@@ -9,7 +9,7 @@
     </div>
     <div class="col-9 pt-5">
       <div class="d-flex">
-        <h1>Line Laravel</h1>
+        <h1>{{ $user->username }}</h1>
       </div>
       <div class="d-flex">
         <div class="pr-5"><strong>23k</strong> followers</div>
