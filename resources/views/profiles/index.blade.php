@@ -8,18 +8,18 @@
         class="rounded-circle" alt="logo">
     </div>
     <div class="col-9 pt-5">
-      <div class="d-flex">
+      <div class="d-flex justify-content-between align-items-baseline">
         <h1>{{ $user->username }}</h1>
+        <a href="#">Add New Post</a>
       </div>
       <div class="d-flex">
-        <div class="pr-5"><strong>23k</strong> followers</div>
-        <div class="pr-5"><strong>153</strong> posts</div>
-        <div class="pr-5"><strong>212</strong> following</div>
+        <div class="pr-5"><strong>37k</strong> followers</div>
+        <div class="pr-5"><strong>245</strong> posts</div>
+        <div class="pr-5"><strong>164</strong> following</div>
       </div>
-      <div class="pt-4 font-weight-bold">line.me</div>
-      <div>LINE reshapes communication around the globe, allowing you to enjoy not only messaging but also free voice
-        and video calls wherever you find yourself.</div>
-      <div><a href="#">www.line.me</a></div>
+      <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
+      <div>{{ $user->profile->description }}</div>
+      <div><a href="#">{{ $user->profile->url }}</a></div>
     </div>
   </div>
   <div class="row pt-4">
