@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -13,6 +14,14 @@ class PostsController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+        $users = auth()->user()->following()->pluck('profiles.user_id');
+
+        $posts = Post::whereIn('user_id', $users)->latest()->get();
+
+        return view('posts.index', compact('posts')) ;
+    }
+
     public function create()
     {
         return view('posts.create');
@@ -21,11 +30,12 @@ class PostsController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'another' => '', // This field will not be validated(you can skip validation)
+            'another' => '', // This field will not be validated(you can  skip validation)
             'caption' => 'required',
             'image' => ['required','image'],
         ]);
 
+        //Image is in 'uploads' folder, in 'public' driver
         $imagePath = request('image')->store('uploads', 'public');
 
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200);
