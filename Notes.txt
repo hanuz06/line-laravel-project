@@ -1,0 +1,1 @@
+How to create email: php artisan make:mail NewUserMail -m emails.welcome-email 
